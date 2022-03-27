@@ -96,7 +96,7 @@
 
 .news-image {
     width: 100%;
-    height: 270px;
+    height: 200px;
     margin-bottom: 10px;
     object-fit: cover;
 }
@@ -175,6 +175,25 @@
     color: #09E079;
 }
 
+.preload {
+    background-image: url('../image/preload.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+    animation: rotation 2s linear infinite;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes rotation {
+    to {
+        transform: rotate(-360deg);
+    }
+}
 
 @media (max-width: 768px) {
     .title {
