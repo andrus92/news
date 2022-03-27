@@ -9,17 +9,17 @@ const choices = new Choices(choiceElem, {
     itemSelectText: '',
 });
 
-const getData = async (url) => {
-    const response = await fetch(url, {
-        headers: {
+const getData = (url) => fetch(url, {
+    headers: {
             'X-Api-Key' : API_KEY,
         }
-        
-    });
-
-    const data = await response.json();
-    return data;
-};
+    }).then((response) => {
+        if (response.ok) {
+            return response.json();
+        } 
+        throw new Error(response.status);
+    })
+    .catch((err) => {console.error(err)});
 
 const getDateCorrectFormat = (isoDate) => {
     const date = new Date(isoDate);
