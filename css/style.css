@@ -173,6 +173,11 @@
     width: 30px;
     height: 30px;
     color: #09E079;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-link:hover {
+    color: #212121;
 }
 
 .preload {

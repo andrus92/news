@@ -89,12 +89,12 @@ const loadNews = async () => {
     const country = localStorage.getItem('country') || 'ua';
     choices.setChoiceByValue(country);
     title.classList.add('hide');
-    const data = await getData(`https://newsapi.org/v2/top-headlines?country=${country}&pageSize=100`);
+    const data = await getData(`https://newsapi.org/v2/top-headlines?country=${country}`);
     renderCard(data.articles);
 };
 
 const loadSearch = async (value) => {
-    const data = await getData(`https://newsapi.org/v2/everything?q=${value}&pageSize=100`);
+    const data = await getData(`https://newsapi.org/v2/everything?q=${value}`);
     title.classList.remove('hide');
     title.textContent = `According to your request “${value}” ${data.articles.length} news have been found`;
     choices.setChoiceByValue('');
@@ -110,7 +110,9 @@ choiceElem.addEventListener('change' , (event) => {
 
 formSearch.addEventListener('submit' , (event) => {
     event.preventDefault();
+    
     const value = formSearch.search_input.value;
+    console.log(value)
     formSearch.reset();
     loadSearch(value);
     
